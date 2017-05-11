@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>30 Days of Programming</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://vonzimr.github.io/"/>
+  <updated>2017-05-11T08:38:44.644Z</updated>
+  <id>http://vonzimr.github.io/</id>
+  
+  <author>
+    <name>Robert Von Zimmerman</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Visualizing Sorting Algorithms with D3.js</title>
+    <link href="http://vonzimr.github.io/2017/05/10/Visualizing-Sorting-Algorithms-with-D3-js/"/>
+    <id>http://vonzimr.github.io/2017/05/10/Visualizing-Sorting-Algorithms-with-D3-js/</id>
+    <published>2017-05-11T04:09:12.000Z</published>
+    <updated>2017-05-11T08:38:44.644Z</updated>
+    
+    <content type="html"><![CDATA[<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<style>
+
+.chart rect {
+  fill: steelblue;
+}
+
+.chart text {
+  fill: white;
+  font: 10px sans-serif;
+  text-anchor: end;
+}
+
+</style>
+
+
+Hey everyone! The original intent of joining this challenge was, among other things, to really solidify my undergrad courses in a time where I'm between college and a career. I figured, with a few months without much luck on the job front, that something like this would really get me motivated and bulk up on the topics I've learned (or perhaps maybe touched on). Plus, I'm unemployed so what else should I be doing? :)
+
+Well, enough explaining myself. Let's get down to it.
+D3.js is a very nice library for visualizing data. With something like this,
+I thought it'd be nice to take a stab at writing some interactive sorting
+algorithm tools. So, if you look at the top of the page, you can see what I've come up with so far! I've written a small example program with insertion sort. The easiest of the sorting algorithms! Each time you click the button, it will perform a single step (with very little feedback).
+
+<h2>What's next?</h2>
+Add more sorting algorithms, of course! Also add some feedback to see the current iteration the sorting algorithm is on, clean up the code (I'd like a nicer way of adding javascript that doesn't require inline script tags. I got very comfortable with browserify and node on a previous project, and I want that same level of clean for this site.)
+
+
+
+
+
+
+
+<div id="insertionChart"> 
+    <svg class="chart"/>
+    <br>
+    <button class="btn btn-primary">Click to Sort!</button>
+</div>
+<script>
+
+var data = [20, 5, 2, 15, 40, 8];
+
+var btn = document.querySelector("div#insertionChart .btn")
+btn.addEventListener("click", function(evt){
+  insStep();
+  updateData();
+  });
+
+var chartDiv = document.querySelector("#insertionChart");
+chartDiv.appendChild(btn);
+
+var width = 420,
+    barHeight = 20;
+
+var curStep = 1;
+
+function swap(i, j){
+  var a   = data[i];
+  data[i] = data[j];
+  data[j] = a;
+}
+
+function insStep(){
+  var j = curStep;
+    while(j > 0 && data[j-1] > data[j]){
+        swap(j,j-1);
+        j -= 1;
+  }
+  curStep +=1;
+}
+
+
+function updateData(){
+    var chart = d3.select('.chart');
+    var bar = chart.selectAll('g').data(data);
+
+    bar.select("rect")
+    .attr("width", x)
+    .attr("height", barHeight - 1);
+
+    bar.select("text")
+    .attr("x", function(d) { return x(d) - 3; })
+    .attr("y", barHeight / 2)
+    .attr("dy", ".35em")
+    .text(function(d) { return d; });
+};
+
+var x = d3.scale.linear()
+    .domain([0, d3.max(data)])
+    .range([0, width]);
+
+var chart = d3.select(".chart")
+    .attr("width", width)
+    .attr("height", barHeight * data.length);
+
+var bar = chart.selectAll("g")
+    .data(data)
+  .enter().append("g")
+    .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
+
+bar.append("rect")
+    .attr("width", x)
+    .attr("height", barHeight - 1);
+
+bar.append("text")
+    .attr("x", function(d) { return x(d) - 3; })
+    .attr("y", barHeight / 2)
+    .attr("dy", ".35em")
+    .text(function(d) { return d; });
+
+</script>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;//d3js.org/d3.v3.min.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;style&gt;
+
+.chart rect {
+  fill: steelblue;
+}
+
+.chart text {
+  fill: white;
+  
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>First Post</title>
+    <link href="http://vonzimr.github.io/2017/05/10/First-Post/"/>
+    <id>http://vonzimr.github.io/2017/05/10/First-Post/</id>
+    <published>2017-05-11T03:39:15.000Z</published>
+    <updated>2017-05-11T03:57:18.189Z</updated>
+    
+    <content type="html"><![CDATA[<p>Switched to Hexo.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Switched to Hexo.&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>

@@ -12,8 +12,6 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="30 Days of Programming">
   
-    <link rel="alternate" href="/atom.xml" title="30 Days of Programming" type="application/atom+xml">
-  
   
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
@@ -52,12 +50,13 @@
           <li><a class=""
                  href="/archives/">Archives</a></li>
         
+          <li><a class=""
+                 href="/atom.xml">rss</a></li>
+        
       </ul>
 
       <!--
       <ul class="nav navbar-nav navbar-right">
-        
-          <li><a href="/atom.xml" title="RSS Feed"><i class="fa fa-rss"></i></a></li>
         
       </ul>
       -->
@@ -101,8 +100,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <script src="https://d3js.org/d3.v4.js"></script>
-
+        <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <style>
 
 .chart rect {
@@ -117,23 +115,37 @@
 
 </style>
 
-<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+Hey everyone! The original intent of joining this challenge was, among other things, to really solidify my undergrad courses in a time where I'm between college and a career. I figured, with a few months without much luck on the job front, that something like this would really get me motivated and bulk up on the topics I've learned (or perhaps maybe touched on). Plus, I'm unemployed so what else should I be doing? :)
+
+Well, enough explaining myself. Let's get down to it.
+D3.js is a very nice library for visualizing data. With something like this,
+I thought it'd be nice to take a stab at writing some interactive sorting
+algorithm tools. So, if you look at the top of the page, you can see what I've come up with so far! I've written a small example program with insertion sort. The easiest of the sorting algorithms! Each time you click the button, it will perform a single step (with very little feedback).
+
+<h2>What's next?</h2>
+Add more sorting algorithms, of course! Also add some feedback to see the current iteration the sorting algorithm is on, clean up the code (I'd like a nicer way of adding javascript that doesn't require inline script tags. I got very comfortable with browserify and node on a previous project, and I want that same level of clean for this site.)
 
 
-<p><div id="insertionChart"> </div></p>
-<p><svg class="chart"/></p>
+
+
+
+
+
+<div id="insertionChart"> 
+    <svg class="chart"/>
+    <br>
+    <button class="btn btn-primary">Click to Sort!</button>
+</div>
 <script>
 
 var data = [20, 5, 2, 15, 40, 8];
-var btn = document.createElement("a");
 
-btn.classList.add("btn", "btn-primary");
+var btn = document.querySelector("div#insertionChart .btn")
 btn.addEventListener("click", function(evt){
   insStep();
   updateData();
   });
-
-btn.innerHTML = "Click to Sort!";
 
 var chartDiv = document.querySelector("#insertionChart");
 chartDiv.appendChild(btn);
@@ -199,10 +211,6 @@ bar.append("text")
 
 </script>
 
-<p>Hey everyone! The original intent of joining this challenge was, among other things, to really solidify my undergrad courses in a time where I’m between college and a career. I figured, with a few months without much luck on the job front, that something like this would really get me motivated and bulk up on the topics I’ve learned (or perhaps maybe touched on). Plus, I’m unemployed so what else should I be doing? :)</p>
-<p>Well, enough explaining myself. Let’s get down to it.<br>D3.js is a very nice library for visualizing data. With something like this,<br>I thought it’d be nice to take a stab at writing some interactive sorting<br>algorithm tools. So, if you look at the top of the page, you can see what I’ve come up with so far! I’ve written a small example program with insertion sort. The easiest of the sorting algorithms! Each time you click the button, it will perform a single step (with very little feedback).</p>
-<p></p><h2>What’s next?</h2><br>Add more sorting algorithms, of course! Also add some feedback to see the current iteration the sorting algorithm is on, clean up the code (I’d like a nicer way of adding javascript that doesn’t require inline script tags. I got very comfortable with browserify and node on a previous project, and I want that same level of clean for this site.)<p></p>
-
       
     </div>
 
@@ -212,7 +220,7 @@ bar.append("text")
     
 
     <footer class="article-footer">
-      <a data-url="http://vonzimr.github.io/2017/05/10/Visualizing-Sorting-Algorithms-with-D3-js/" data-id="cj2k500uk0001qc8v8mi59tts" class="article-share-link">
+      <a data-url="http://vonzimr.github.io/2017/05/10/Visualizing-Sorting-Algorithms-with-D3-js/" data-id="cj2k61sgz0001rv8vwt68d7ov" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -263,7 +271,7 @@ bar.append("text")
     
 
     <footer class="article-footer">
-      <a data-url="http://vonzimr.github.io/2017/05/10/First-Post/" data-id="cj2k500ue0000qc8veihii41x" class="article-share-link">
+      <a data-url="http://vonzimr.github.io/2017/05/10/First-Post/" data-id="cj2k61sgt0000rv8vwcumfx9m" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -286,7 +294,7 @@ bar.append("text")
           
   <div class="sidebar-module sidebar-module-inset">
   <h4>About</h4>
-  <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+  <p>Part of the <i>Busy Learning Guild</i> On <i>Habitica</i></p>
 
 </div>
 
