@@ -3,14 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>30 Days of Programming</title>
+  <title>Setting up Hexo to add Per-Post Javascript and CSS | 30 Days of Programming</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="30 Days of Programming">
-<meta property="og:url" content="http://vonzimr.github.io/index.html">
+  <meta name="description" content="I mentioned earlier that I’d like to be able to seperate Javascript/CSSin a per-post basis. Well, after some digging I found a solution and thoughtit’d be nice to post here. First, find your themes/yo">
+<meta name="keywords" content="hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Setting up Hexo to add Per-Post Javascript and CSS">
+<meta property="og:url" content="http://vonzimr.github.io/2017/05/11/Setting-up-Hexo-to-add-Per-Post-Javascript-and-CSS/index.html">
 <meta property="og:site_name" content="30 Days of Programming">
+<meta property="og:description" content="I mentioned earlier that I’d like to be able to seperate Javascript/CSSin a per-post basis. Well, after some digging I found a solution and thoughtit’d be nice to post here. First, find your themes/yo">
+<meta property="og:updated_time" content="2017-05-11T23:46:16.798Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="30 Days of Programming">
+<meta name="twitter:title" content="Setting up Hexo to add Per-Post Javascript and CSS">
+<meta name="twitter:description" content="I mentioned earlier that I’d like to be able to seperate Javascript/CSSin a per-post basis. Well, after some digging I found a solution and thoughtit’d be nice to post here. First, find your themes/yo">
   
   
   
@@ -43,7 +48,7 @@
     <div class="collapse navbar-collapse" id="main-menu-navbar">
       <ul class="nav navbar-nav">
         
-          <li><a class="active"
+          <li><a class=""
                  href="/index.html">Home</a></li>
         
           <li><a class=""
@@ -71,15 +76,13 @@
 
     <div class="row">
         <div class="col-sm-8 blog-main">
-          
-  
-    <article id="post-Setting-up-Hexo-to-add-Per-Post-Javascript-and-CSS" class="article article-type-post" itemscope itemprop="blogPost">
+          <article id="post-Setting-up-Hexo-to-add-Per-Post-Javascript-and-CSS" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/11/Setting-up-Hexo-to-add-Per-Post-Javascript-and-CSS/">Setting up Hexo to add Per-Post Javascript and CSS</a>
+    <h1 class="article-title" itemprop="name">
+      Setting up Hexo to add Per-Post Javascript and CSS
     </h1>
   
 
@@ -123,81 +126,22 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
   
-    <article id="post-Visualizing-Sorting-Algorithms-with-D3js" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
+  <li role="presentation">
+    <a href="/2017/05/10/Visualizing-Sorting-Algorithms-with-D3js/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">Visualizing Sorting Algorithms with D3.js</span>
+    </a>
+  </li>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/10/Visualizing-Sorting-Algorithms-with-D3js/">Visualizing Sorting Algorithms with D3.js</a>
-    </h1>
   
-
-
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/2017/05/10/Visualizing-Sorting-Algorithms-with-D3js/" class="article-date"><time datetime="2017-05-11T04:09:12.000Z" itemprop="datePublished">2017-05-10</time></a>
-</div>
-
-    
-    
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
-<link rel="stylesheet" href="/2017/05/10/Visualizing-Sorting-Algorithms-with-D3js/style.css">
-
-Hey everyone! The original intent of joining this challenge was, among other things, to really solidify my undergrad courses in a time where I'm between college and a career. I figured, with a few months without much luck on the job front, that something like this would really get me motivated and bulk up on the topics I've learned (or perhaps maybe touched on). Plus, I'm unemployed so what else should I be doing? :)
-
-Well, enough explaining myself. Let's get down to it.
-D3.js is a very nice library for visualizing data. With something like this,
-I thought it'd be nice to take a stab at writing some interactive sorting
-algorithm tools. So, if you look at the bottom of the page, you can see what I've come up with so far! I've written a small example program with insertion sort. The easiest of the sorting algorithms! Each time you click the button, it will perform a single step (with very little feedback).
-
-<h2>What's next?</h2>
-Add more sorting algorithms, of course! Also add some feedback to see the current iteration the sorting algorithm is on, clean up the code (I'd like a nicer way of adding javascript that doesn't require inline script tags. I got very comfortable with browserify and node on a previous project, and I want that same level of clean for this site.)
-
-<div id="insertionChart"> 
-    <svg class="chart"/>
-    <br>
-    <button class="btn btn-primary">Click to Sort!</button>
-</div>
-
-<script src="/2017/05/10/Visualizing-Sorting-Algorithms-with-D3js/script.js" charset="utf-8"></script>
-
-      
-    </div>
-
-    
-      
-
-    
-
-    <footer class="article-footer">
-      <a data-url="http://vonzimr.github.io/2017/05/10/Visualizing-Sorting-Algorithms-with-D3js/" data-id="cj2l18a5f0000c58vv4r3nk9x" class="article-share-link">
-        <i class="fa fa-share"></i> Share
-      </a>
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
+</ul>
 
 
   
+</article>
 
 
 

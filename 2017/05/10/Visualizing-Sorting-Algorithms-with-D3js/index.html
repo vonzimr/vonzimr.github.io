@@ -5,26 +5,25 @@
   
   <title>Visualizing Sorting Algorithms with D3.js | 30 Days of Programming</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content=".chart rect {   fill: steelblue; }  .chart text {   fill: white;   font: 10px sans-serif;   text-anchor: end; }     Hey everyone! The original intent of joining this challenge was, among other thin">
+  <meta name="description" content="Hey everyone! The original intent of joining this challenge was, among other things, to really solidify my undergrad courses in a time where I&apos;m between college and a career. I figured, with a few">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Visualizing Sorting Algorithms with D3.js">
-<meta property="og:url" content="http://vonzimr.github.io/2017/05/10/Visualizing-Sorting-Algorithms-with-D3-js/index.html">
+<meta property="og:url" content="http://vonzimr.github.io/2017/05/10/Visualizing-Sorting-Algorithms-with-D3js/index.html">
 <meta property="og:site_name" content="30 Days of Programming">
-<meta property="og:description" content=".chart rect {   fill: steelblue; }  .chart text {   fill: white;   font: 10px sans-serif;   text-anchor: end; }     Hey everyone! The original intent of joining this challenge was, among other thin">
-<meta property="og:updated_time" content="2017-05-11T08:43:50.071Z">
+<meta property="og:description" content="Hey everyone! The original intent of joining this challenge was, among other things, to really solidify my undergrad courses in a time where I&apos;m between college and a career. I figured, with a few">
+<meta property="og:updated_time" content="2017-05-11T23:21:39.553Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Visualizing Sorting Algorithms with D3.js">
-<meta name="twitter:description" content=".chart rect {   fill: steelblue; }  .chart text {   fill: white;   font: 10px sans-serif;   text-anchor: end; }     Hey everyone! The original intent of joining this challenge was, among other thin">
+<meta name="twitter:description" content="Hey everyone! The original intent of joining this challenge was, among other things, to really solidify my undergrad courses in a time where I&apos;m between college and a career. I figured, with a few">
   
   
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
-
+  <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <link rel="stylesheet" href="/css/styles.css">
   
 
@@ -76,7 +75,7 @@
 
     <div class="row">
         <div class="col-sm-8 blog-main">
-          <article id="post-Visualizing-Sorting-Algorithms-with-D3-js" class="article article-type-post" itemscope itemprop="blogPost">
+          <article id="post-Visualizing-Sorting-Algorithms-with-D3js" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
@@ -91,7 +90,7 @@
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2017/05/10/Visualizing-Sorting-Algorithms-with-D3-js/" class="article-date"><time datetime="2017-05-11T04:09:12.000Z" itemprop="datePublished">2017-05-10</time></a>
+  <a href="/2017/05/10/Visualizing-Sorting-Algorithms-with-D3js/" class="article-date"><time datetime="2017-05-11T04:09:12.000Z" itemprop="datePublished">2017-05-10</time></a>
 </div>
 
     
@@ -103,20 +102,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
-<style>
-
-.chart rect {
-  fill: steelblue;
-}
-
-.chart text {
-  fill: white;
-  font: 10px sans-serif;
-  text-anchor: end;
-}
-
-</style>
-
+<link rel="stylesheet" href="/2017/05/10/Visualizing-Sorting-Algorithms-with-D3js/style.css">
 
 Hey everyone! The original intent of joining this challenge was, among other things, to really solidify my undergrad courses in a time where I'm between college and a career. I figured, with a few months without much luck on the job front, that something like this would really get me motivated and bulk up on the topics I've learned (or perhaps maybe touched on). Plus, I'm unemployed so what else should I be doing? :)
 
@@ -128,90 +114,13 @@ algorithm tools. So, if you look at the bottom of the page, you can see what I'v
 <h2>What's next?</h2>
 Add more sorting algorithms, of course! Also add some feedback to see the current iteration the sorting algorithm is on, clean up the code (I'd like a nicer way of adding javascript that doesn't require inline script tags. I got very comfortable with browserify and node on a previous project, and I want that same level of clean for this site.)
 
-
-
-
-
-
-
 <div id="insertionChart"> 
     <svg class="chart"/>
     <br>
     <button class="btn btn-primary">Click to Sort!</button>
 </div>
-<script>
 
-var data = [20, 5, 2, 15, 40, 8];
-
-var btn = document.querySelector("div#insertionChart .btn")
-btn.addEventListener("click", function(evt){
-  insStep();
-  updateData();
-  });
-
-var chartDiv = document.querySelector("#insertionChart");
-chartDiv.appendChild(btn);
-
-var width = 420,
-    barHeight = 20;
-
-var curStep = 1;
-
-function swap(i, j){
-  var a   = data[i];
-  data[i] = data[j];
-  data[j] = a;
-}
-
-function insStep(){
-  var j = curStep;
-    while(j > 0 && data[j-1] > data[j]){
-        swap(j,j-1);
-        j -= 1;
-  }
-  curStep +=1;
-}
-
-
-function updateData(){
-    var chart = d3.select('.chart');
-    var bar = chart.selectAll('g').data(data);
-
-    bar.select("rect")
-    .attr("width", x)
-    .attr("height", barHeight - 1);
-
-    bar.select("text")
-    .attr("x", function(d) { return x(d) - 3; })
-    .attr("y", barHeight / 2)
-    .attr("dy", ".35em")
-    .text(function(d) { return d; });
-};
-
-var x = d3.scale.linear()
-    .domain([0, d3.max(data)])
-    .range([0, width]);
-
-var chart = d3.select(".chart")
-    .attr("width", width)
-    .attr("height", barHeight * data.length);
-
-var bar = chart.selectAll("g")
-    .data(data)
-  .enter().append("g")
-    .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
-
-bar.append("rect")
-    .attr("width", x)
-    .attr("height", barHeight - 1);
-
-bar.append("text")
-    .attr("x", function(d) { return x(d) - 3; })
-    .attr("y", barHeight / 2)
-    .attr("dy", ".35em")
-    .text(function(d) { return d; });
-
-</script>
+<script src="/2017/05/10/Visualizing-Sorting-Algorithms-with-D3js/script.js" charset="utf-8"></script>
 
       
     </div>
@@ -222,7 +131,7 @@ bar.append("text")
     
 
     <footer class="article-footer">
-      <a data-url="http://vonzimr.github.io/2017/05/10/Visualizing-Sorting-Algorithms-with-D3-js/" data-id="cj2k637ob0001uz8vu3712gdy" class="article-share-link">
+      <a data-url="http://vonzimr.github.io/2017/05/10/Visualizing-Sorting-Algorithms-with-D3js/" data-id="cj2l18a5f0000c58vv4r3nk9x" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -234,13 +143,13 @@ bar.append("text")
     
 <ul id="article-nav" class="nav nav-pills nav-justified">
   
+  
   <li role="presentation">
-    <a href="/2017/05/10/First-Post/" id="article-nav-older" class="article-nav-link-wrap">
-      <i class="fa fa-chevron-left pull-left"></i>
-      <span class="article-nav-link-title">First Post</span>
+    <a href="/2017/05/11/Setting-up-Hexo-to-add-Per-Post-Javascript-and-CSS/" id="article-nav-newer" class="article-nav-link-wrap">
+      <span class="article-nav-link-title">Setting up Hexo to add Per-Post Javascript and CSS</span>
+      <i class="fa fa-chevron-right pull-right"></i>
     </a>
   </li>
-  
   
 </ul>
 
@@ -265,9 +174,21 @@ bar.append("text")
 
 
   
+  <div class="sidebar-module">
+    <h4>Tags</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/hexo/">hexo</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
 
 
   
+  <div class="sidebar-module">
+    <h4>Tag Cloud</h4>
+    <p class="tagcloud">
+      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a>
+    </p>
+  </div>
+
 
   
   <div class="sidebar-module">
@@ -283,11 +204,11 @@ bar.append("text")
     <ul class="sidebar-module-list">
       
         <li>
-          <a href="/2017/05/10/Visualizing-Sorting-Algorithms-with-D3-js/">Visualizing Sorting Algorithms with D3.js</a>
+          <a href="/2017/05/11/Setting-up-Hexo-to-add-Per-Post-Javascript-and-CSS/">Setting up Hexo to add Per-Post Javascript and CSS</a>
         </li>
       
         <li>
-          <a href="/2017/05/10/First-Post/">First Post</a>
+          <a href="/2017/05/10/Visualizing-Sorting-Algorithms-with-D3js/">Visualizing Sorting Algorithms with D3.js</a>
         </li>
       
     </ul>
