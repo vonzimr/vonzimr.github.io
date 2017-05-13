@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://vonzimr.github.io/"/>
-  <updated>2017-05-11T23:46:16.798Z</updated>
+  <updated>2017-05-13T00:09:38.699Z</updated>
   <id>http://vonzimr.github.io/</id>
   
   <author>
@@ -14,6 +14,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Updating Habitica Habits with Gnome-Pomodoro</title>
+    <link href="http://vonzimr.github.io/2017/05/12/Updating-Habitica-Habits-with-Gnome-Pomodoro/"/>
+    <id>http://vonzimr.github.io/2017/05/12/Updating-Habitica-Habits-with-Gnome-Pomodoro/</id>
+    <published>2017-05-13T00:09:38.705Z</published>
+    <updated>2017-05-13T00:09:38.699Z</updated>
+    
+    <content type="html"><![CDATA[<p>Quick little tip for anyone who likes using habitica and also happen to use<br>Gnome Shell. I’ve been using <a href="http://gnomepomodoro.org/" target="_blank" rel="external">Gnome-Pomodoro</a> For<br>scheduling breaks and staying on task. I noticed the app also has support for<br>Custom actions. This can be really useful to update habitica habits when a pom<br>has been completed!</p>
+<p>So I wrote a little script that will update your Pomodoro Habit<br>accordingly. It relies on <a href="https://github.com/philadams/habitica" target="_blank" rel="external">Habitica CLI</a>, so you’ll need to set up your account accordingly follow the instructions on the linked page.</p>
+<p>Here’s the quick n’ dirty script:</p>
+<figure class="highlight bash"><figcaption><span>updatePom.sh []</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line">pomHabit=$(habitica habits | grep <span class="string">'&lt;Your Habit Name&gt;'</span> | grep -o <span class="string">'[0-9][0-9]'</span>)</div><div class="line">notify-send <span class="string">"Pom Habit updated"</span></div><div class="line">habitica habits up <span class="variable">$pomHabit</span></div></pre></td></tr></table></figure>
+<p>You could <i>also</i> directly call the habitica program from the custom actions<br>window, but this will let you update/delete habits and still allow the script<br>to work since it references the habit name and not the habit number (which may change). It’s more of a “set and forget” solution!</p>
+<p>Once you have the script, just add it as a custom action:</p>
+<img src="/2017/05/12/Updating-Habitica-Habits-with-Gnome-Pomodoro/custom_action.png" alt="custom_action.png" title="">
+<p>Possible Issues:</p>
+<ul>
+<li>Script only looks for two digit numbers in order to grab the correct habit to<br>  update, You can change this accordingly. Check out this page for   <a href="https://www.gnu.org/software/findutils/manual/html_node/find_html/grep-regular-expression-syntax.html" target="_blank" rel="external">using regex with grep</a></li>
+<li>Might break on updates to the habitica CLI </li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Quick little tip for anyone who likes using habitica and also happen to use&lt;br&gt;Gnome Shell. I’ve been using &lt;a href=&quot;http://gnomepomodoro
+    
+    </summary>
+    
+    
+      <category term="habitica pomodoro gtd" scheme="http://vonzimr.github.io/tags/habitica-pomodoro-gtd/"/>
+    
+  </entry>
   
   <entry>
     <title>Setting up Hexo to add Per-Post Javascript and CSS</title>
@@ -43,7 +75,7 @@
     <link href="http://vonzimr.github.io/2017/05/10/Visualizing-Sorting-Algorithms-with-D3js/"/>
     <id>http://vonzimr.github.io/2017/05/10/Visualizing-Sorting-Algorithms-with-D3js/</id>
     <published>2017-05-11T04:09:12.000Z</published>
-    <updated>2017-05-11T23:21:39.553Z</updated>
+    <updated>2017-05-12T05:33:32.014Z</updated>
     
     <content type="html"><![CDATA[<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <link rel="stylesheet" href="/2017/05/10/Visualizing-Sorting-Algorithms-with-D3js/style.css">
